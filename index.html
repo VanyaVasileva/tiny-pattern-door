@@ -3,47 +3,69 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Special Delivery</title>
+<title>Mouse Mail Story</title>
 <style>
-:root{--cream:#f7f1e9;--ink:#403a34;--wood:#b69373;--wood2:#95745a}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:ui-rounded,"SF Pro Rounded",system-ui,sans-serif;background:var(--cream);color:var(--ink)}body{display:grid;place-items:center}
-.app{position:relative;width:100vw;height:100svh;min-height:100vh;overflow:hidden;background:linear-gradient(#fbf8f3,#f1e8dd)}
-.scene{position:absolute;inset:0;overflow:hidden}.ground{position:absolute;left:0;right:0;bottom:16%;height:2px;background:rgba(80,65,55,.14)}
-.door-frame{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);width:min(54vw,270px);aspect-ratio:.72;perspective:1000px;filter:drop-shadow(0 14px 22px rgba(70,52,38,.15))}
-.doorway{position:absolute;inset:0;border:10px solid #d6c0a7;border-bottom-width:15px;border-radius:22px 22px 8px 8px;background:#eee4d8;overflow:visible}
-.door{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(90deg,var(--wood2),var(--wood));border:2px solid rgba(70,52,38,.22);transition:transform .8s steps(4,end);transform-style:preserve-3d;backface-visibility:hidden;z-index:5}.door:before{content:"";position:absolute;inset:9%;border:2px solid rgba(255,255,255,.25);border-radius:7px}.left{left:0;transform-origin:left center}.right{right:0;transform-origin:right center}.knob{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;background:#665548}.left .knob{right:10px}.right .knob{left:10px}
-.character{position:absolute;object-fit:contain;opacity:0;pointer-events:none;filter:drop-shadow(0 5px 5px rgba(65,52,42,.10))}
-.bicycle{width:min(48vw,250px);left:-38%;bottom:15%}.mailbox{width:min(28vw,145px);right:7%;bottom:15%}.reading{width:min(28vw,145px);left:50%;bottom:14%;transform:translateX(-50%)}
-.pattern{position:absolute;inset:0;background:url('mouse-mail-pattern.jpg') center/cover no-repeat;opacity:0;transform:scale(.92);transition:opacity .45s steps(3,end),transform .6s steps(4,end);z-index:7}.final{position:absolute;left:50%;bottom:5%;transform:translate(-50%,10px);width:90%;text-align:center;opacity:0;z-index:8;transition:opacity .35s steps(3,end),transform .35s steps(3,end)}.final h1{margin:0;font-size:clamp(27px,7vw,42px)}.final p{margin:5px 0 0;font-size:clamp(15px,4vw,19px)}
-.start{position:absolute;left:50%;top:9%;transform:translateX(-50%);z-index:9;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(70,52,38,.12);white-space:nowrap;transition:opacity .25s steps(2,end)}.hint{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);width:90%;text-align:center;opacity:.72;z-index:9;transition:opacity .25s steps(2,end)}.tap{position:absolute;inset:0;z-index:20;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.play .left{transform:rotateY(-102deg)}.play .right{transform:rotateY(102deg)}.play .start,.play .hint{opacity:0}
-.play .bicycle{opacity:1;animation:ride 3s steps(6,end) .8s forwards}.play .mailbox{animation:popMailbox .35s steps(2,end) 3.25s forwards}.play .reading{animation:popReader .5s steps(3,end) 4.55s forwards}.play .pattern{animation:showPattern .65s steps(4,end) 5.65s forwards}.play .final{animation:showText .45s steps(3,end) 6.25s forwards}
-@keyframes ride{0%{left:-38%;transform:translateY(0) rotate(0)}16%{left:-22%;transform:translateY(-3px) rotate(-1deg)}33%{left:-7%;transform:translateY(1px) rotate(.5deg)}50%{left:10%;transform:translateY(-2px) rotate(-.8deg)}66%{left:24%;transform:translateY(0) rotate(.5deg)}83%{left:36%;transform:translateY(-1px) rotate(-.4deg)}100%{left:43%;transform:translateY(0) rotate(0)}}
-@keyframes popMailbox{0%{opacity:0;transform:translateY(8px)}50%{opacity:1;transform:translateY(-3px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes popReader{0%{opacity:0;transform:translateX(-50%) scale(.9)}66%{opacity:1;transform:translateX(-50%) scale(1.03)}100%{opacity:1;transform:translateX(-50%) scale(1)}}
-@keyframes showPattern{0%{opacity:0;transform:scale(.92)}100%{opacity:1;transform:scale(1)}}@keyframes showText{0%{opacity:0;transform:translate(-50%,10px)}100%{opacity:1;transform:translate(-50%,0)}}
+:root{--cream:#f7f1e9;--ink:#403a34}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:ui-rounded,"SF Pro Rounded",system-ui,sans-serif;background:var(--cream);color:var(--ink)}
+body{display:grid;place-items:center}
+.app{position:relative;width:100vw;height:100svh;min-height:100vh;overflow:hidden;background:linear-gradient(#fbf8f3,#f3eadf)}
+.scene{position:absolute;inset:0;overflow:hidden}
+.ground{position:absolute;left:8%;right:8%;bottom:17%;height:2px;background:rgba(74,61,51,.12)}
+.character{position:absolute;object-fit:contain;opacity:0;pointer-events:none;filter:drop-shadow(0 7px 7px rgba(60,48,40,.08))}
+.bicycle{width:min(82vw,430px);right:-88%;bottom:14%}
+.mailbox{width:min(62vw,325px);left:50%;bottom:13%;transform:translateX(-50%)}
+.posting{width:min(66vw,345px);left:50%;bottom:13%;transform:translateX(-50%)}
+.reading{width:min(66vw,345px);left:50%;bottom:13%;transform:translateX(-50%)}
+.pattern{position:absolute;inset:0;background:url('mouse-mail-pattern.jpg') center/cover no-repeat;opacity:0;transform:scale(.96);z-index:6}
+.start{position:absolute;left:50%;top:10%;transform:translateX(-50%);z-index:9;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(70,52,38,.12);white-space:nowrap;transition:opacity .2s steps(2,end)}
+.caption{position:absolute;left:50%;top:19%;transform:translateX(-50%);width:90%;text-align:center;font-size:clamp(18px,5vw,27px);opacity:0;z-index:8}
+.final{position:absolute;left:50%;bottom:5%;transform:translate(-50%,10px);width:90%;text-align:center;opacity:0;z-index:8}.final h1{margin:0;font-size:clamp(28px,7vw,43px)}.final p{margin:5px 0 0;font-size:clamp(15px,4vw,19px)}
+.tap{position:absolute;inset:0;z-index:20;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.play .start{opacity:0}
+.play .caption{animation:captionStory 6.2s steps(1,end) .25s forwards}
+.play .bicycle{animation:bikeStory 2.3s steps(6,end) .45s forwards}
+.play .mailbox{animation:mailboxStory 1.2s steps(3,end) 2.75s forwards}
+.play .posting{animation:postingStory 1.2s steps(3,end) 3.8s forwards}
+.play .reading{animation:readingStory 1.25s steps(3,end) 4.9s forwards}
+.play .pattern{animation:patternStory .65s steps(4,end) 6.1s forwards}
+.play .final{animation:finalStory .45s steps(3,end) 6.65s forwards}
+@keyframes bikeStory{
+  0%{opacity:1;right:-88%;transform:translateY(0) rotate(0)}
+  16%{opacity:1;right:-62%;transform:translateY(-4px) rotate(-1deg)}
+  33%{opacity:1;right:-35%;transform:translateY(1px) rotate(.6deg)}
+  50%{opacity:1;right:-8%;transform:translateY(-3px) rotate(-.8deg)}
+  66%{opacity:1;right:12%;transform:translateY(0) rotate(.4deg)}
+  83%{opacity:1;right:24%;transform:translateY(-2px) rotate(-.4deg)}
+  100%{opacity:0;right:28%;transform:translateY(0) rotate(0)}
+}
+@keyframes mailboxStory{0%{opacity:0;transform:translateX(-50%) translateY(10px)}33%{opacity:1;transform:translateX(-50%) translateY(-4px)}100%{opacity:0;transform:translateX(-50%) translateY(0)}}
+@keyframes postingStory{0%{opacity:0;transform:translateX(-50%) scale(.94)}33%{opacity:1;transform:translateX(-50%) scale(1.03)}100%{opacity:0;transform:translateX(-50%) scale(1)}}
+@keyframes readingStory{0%{opacity:0;transform:translateX(-50%) translateY(7px)}33%{opacity:1;transform:translateX(-50%) translateY(-2px)}100%{opacity:0;transform:translateX(-50%) translateY(0)}}
+@keyframes captionStory{0%{opacity:1}18%{opacity:1}19%{opacity:0}38%{opacity:1}39%{opacity:0}57%{opacity:1}58%{opacity:0}77%{opacity:1}78%,100%{opacity:0}}
+@keyframes patternStory{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
+@keyframes finalStory{0%{opacity:0;transform:translate(-50%,10px)}100%{opacity:1;transform:translate(-50%,0)}}
 @media(min-width:700px){.app{max-width:520px;height:min(92vh,900px);border-radius:28px;box-shadow:0 24px 70px rgba(0,0,0,.16)}}
 </style>
 </head>
 <body>
-<main class="app" id="app" aria-label="Interactive Special Delivery mouse story">
+<main class="app" id="app" aria-label="Interactive Mouse Mail story">
   <div class="scene">
     <div class="ground"></div>
-    <div class="door-frame"><div class="doorway"><div class="door left"><span class="knob"></span></div><div class="door right"><span class="knob"></span></div></div></div>
+    <div class="caption">A tiny delivery is on the way…</div>
     <img class="character bicycle" src="mouse-bicycle-mail.png" alt="Mouse riding a bicycle with mail">
-    <img class="character mailbox" src="mouse-postbox-waiting.png" alt="Mouse waiting beside a mailbox">
+    <img class="character mailbox" src="mouse-postbox-waiting.png" alt="Mouse waiting beside the mailbox">
+    <img class="character posting" src="mouse-posting-letter.png" alt="Mouse posting a letter">
     <img class="character reading" src="mouse-reading-letter.png" alt="Mouse reading a letter">
     <div class="pattern"></div>
     <div class="final"><h1>Meet Mouse Mail ✉️</h1><p>My newest pattern has arrived</p></div>
   </div>
-  <div class="start">Tap for a special delivery 💌</div>
-  <div class="hint">The mice have something for you</div>
-  <button class="tap" id="tap" aria-label="Play the Special Delivery story"></button>
+  <div class="start">Tap to play the tiny story 💌</div>
+  <button class="tap" id="tap" aria-label="Play the Mouse Mail story"></button>
 </main>
 <script>
 const app=document.getElementById('app');
-const tap=document.getElementById('tap');
-tap.addEventListener('click',()=>{app.classList.remove('play');void app.offsetWidth;app.classList.add('play');});
+document.getElementById('tap').addEventListener('click',()=>{app.classList.remove('play');void app.offsetWidth;app.classList.add('play');});
 </script>
 </body>
 </html>

@@ -19,30 +19,61 @@ body{display:grid;place-items:center}
 .reading{width:min(66vw,345px);left:50%;bottom:13%;transform:translateX(-50%)}
 .pattern{position:absolute;inset:0;background:url('mouse-mail-pattern.jpg') center/cover no-repeat;opacity:0;transform:scale(.96);z-index:6}
 .start{position:absolute;left:50%;top:10%;transform:translateX(-50%);z-index:9;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(70,52,38,.12);white-space:nowrap;transition:opacity .2s steps(2,end)}
-.caption{position:absolute;left:50%;top:19%;transform:translateX(-50%);width:90%;text-align:center;font-size:clamp(18px,5vw,27px);opacity:0;z-index:8}
+.caption{position:absolute;left:50%;top:18%;transform:translateX(-50%);width:90%;text-align:center;font-size:clamp(18px,5vw,27px);opacity:0;z-index:8}
 .final{position:absolute;left:50%;bottom:5%;transform:translate(-50%,10px);width:90%;text-align:center;opacity:0;z-index:8}.final h1{margin:0;font-size:clamp(28px,7vw,43px)}.final p{margin:5px 0 0;font-size:clamp(15px,4vw,19px)}
 .tap{position:absolute;inset:0;z-index:20;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .play .start{opacity:0}
-.play .caption{animation:captionStory 6.2s steps(1,end) .25s forwards}
-.play .bicycle{animation:bikeStory 2.3s steps(6,end) .45s forwards}
-.play .mailbox{animation:mailboxStory 1.2s steps(3,end) 2.75s forwards}
-.play .posting{animation:postingStory 1.2s steps(3,end) 3.8s forwards}
-.play .reading{animation:readingStory 1.25s steps(3,end) 4.9s forwards}
-.play .pattern{animation:patternStory .65s steps(4,end) 6.1s forwards}
-.play .final{animation:finalStory .45s steps(3,end) 6.65s forwards}
+.play .caption{animation:captionStory 11.4s steps(1,end) .2s forwards}
+.play .bicycle{animation:bikeStory 3.1s steps(7,end) .5s forwards}
+.play .mailbox{animation:mailboxStory 2.6s steps(6,end) 3.7s forwards}
+.play .posting{animation:postingStory 2.6s steps(6,end) 6.35s forwards}
+.play .reading{animation:readingStory 2.7s steps(6,end) 9s forwards}
+.play .pattern{animation:patternStory .7s steps(4,end) 11.8s forwards}
+.play .final{animation:finalStory .5s steps(3,end) 12.45s forwards}
 @keyframes bikeStory{
   0%{opacity:1;right:-88%;transform:translateY(0) rotate(0)}
-  16%{opacity:1;right:-62%;transform:translateY(-4px) rotate(-1deg)}
-  33%{opacity:1;right:-35%;transform:translateY(1px) rotate(.6deg)}
-  50%{opacity:1;right:-8%;transform:translateY(-3px) rotate(-.8deg)}
-  66%{opacity:1;right:12%;transform:translateY(0) rotate(.4deg)}
-  83%{opacity:1;right:24%;transform:translateY(-2px) rotate(-.4deg)}
-  100%{opacity:0;right:28%;transform:translateY(0) rotate(0)}
+  14%{opacity:1;right:-61%;transform:translateY(-3px) rotate(-.7deg)}
+  28%{opacity:1;right:-36%;transform:translateY(1px) rotate(.4deg)}
+  42%{opacity:1;right:-10%;transform:translateY(-2px) rotate(-.5deg)}
+  56%{opacity:1;right:10%;transform:translateY(0) rotate(.3deg)}
+  70%{opacity:1;right:21%;transform:translateY(-2px) rotate(-.3deg)}
+  86%{opacity:1;right:26%;transform:translateY(1px) rotate(.2deg)}
+  96%{opacity:1;right:26%;transform:translateY(0) rotate(0)}
+  100%{opacity:0;right:26%;transform:translateY(0) rotate(0)}
 }
-@keyframes mailboxStory{0%{opacity:0;transform:translateX(-50%) translateY(10px)}33%{opacity:1;transform:translateX(-50%) translateY(-4px)}100%{opacity:0;transform:translateX(-50%) translateY(0)}}
-@keyframes postingStory{0%{opacity:0;transform:translateX(-50%) scale(.94)}33%{opacity:1;transform:translateX(-50%) scale(1.03)}100%{opacity:0;transform:translateX(-50%) scale(1)}}
-@keyframes readingStory{0%{opacity:0;transform:translateX(-50%) translateY(7px)}33%{opacity:1;transform:translateX(-50%) translateY(-2px)}100%{opacity:0;transform:translateX(-50%) translateY(0)}}
-@keyframes captionStory{0%{opacity:1}18%{opacity:1}19%{opacity:0}38%{opacity:1}39%{opacity:0}57%{opacity:1}58%{opacity:0}77%{opacity:1}78%,100%{opacity:0}}
+@keyframes mailboxStory{
+  0%{opacity:0;transform:translateX(-50%) translateY(8px)}
+  12%{opacity:1;transform:translateX(-50%) translateY(-2px)}
+  28%{opacity:1;transform:translateX(-50%) translateY(1px) rotate(.35deg)}
+  48%{opacity:1;transform:translateX(-50%) translateY(-1px) rotate(-.3deg)}
+  68%{opacity:1;transform:translateX(-50%) translateY(0) rotate(.2deg)}
+  92%{opacity:1;transform:translateX(-50%) translateY(0) rotate(0)}
+  100%{opacity:0;transform:translateX(-50%) translateY(0)}
+}
+@keyframes postingStory{
+  0%{opacity:0;transform:translateX(-50%) scale(.97)}
+  12%{opacity:1;transform:translateX(-50%) scale(1.01)}
+  30%{opacity:1;transform:translateX(-50%) rotate(-.35deg)}
+  50%{opacity:1;transform:translateX(-50%) rotate(.3deg) translateY(-1px)}
+  70%{opacity:1;transform:translateX(-50%) rotate(-.2deg) translateY(1px)}
+  92%{opacity:1;transform:translateX(-50%) rotate(0)}
+  100%{opacity:0;transform:translateX(-50%) rotate(0)}
+}
+@keyframes readingStory{
+  0%{opacity:0;transform:translateX(-50%) translateY(7px)}
+  12%{opacity:1;transform:translateX(-50%) translateY(-2px)}
+  28%{opacity:1;transform:translateX(-50%) rotate(.3deg)}
+  48%{opacity:1;transform:translateX(-50%) rotate(-.25deg) translateY(-1px)}
+  68%{opacity:1;transform:translateX(-50%) rotate(.15deg) translateY(1px)}
+  92%{opacity:1;transform:translateX(-50%) rotate(0)}
+  100%{opacity:0;transform:translateX(-50%) rotate(0)}
+}
+@keyframes captionStory{
+  0%{opacity:1}24%{opacity:1}25%{opacity:0}
+  31%{opacity:1}49%{opacity:1}50%{opacity:0}
+  56%{opacity:1}74%{opacity:1}75%{opacity:0}
+  81%{opacity:1}99%{opacity:1}100%{opacity:0}
+}
 @keyframes patternStory{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
 @keyframes finalStory{0%{opacity:0;transform:translate(-50%,10px)}100%{opacity:1;transform:translate(-50%,0)}}
 @media(min-width:700px){.app{max-width:520px;height:min(92vh,900px);border-radius:28px;box-shadow:0 24px 70px rgba(0,0,0,.16)}}

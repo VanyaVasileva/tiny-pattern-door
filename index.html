@@ -11,35 +11,40 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:ui-rounded
 body{display:grid;place-items:center}
 .app{position:relative;width:100vw;height:100svh;min-height:100vh;overflow:hidden;background:linear-gradient(#fbf8f3,#f3eadf)}
 .scene{position:absolute;inset:0;overflow:hidden}
-.ground{position:absolute;left:8%;right:8%;bottom:17%;height:2px;background:rgba(74,61,51,.12)}
+.ground{position:absolute;left:6%;right:6%;bottom:15%;height:2px;background:rgba(74,61,51,.12)}
 .character{position:absolute;object-fit:contain;opacity:0;pointer-events:none;filter:drop-shadow(0 7px 7px rgba(60,48,40,.08))}
-.bicycle{width:min(82vw,430px);right:-88%;bottom:14%}
-.mailbox{width:min(62vw,325px);left:50%;bottom:13%;transform:translateX(-50%)}
-.posting{width:min(66vw,345px);left:50%;bottom:13%;transform:translateX(-50%)}
-.reading{width:min(66vw,345px);left:50%;bottom:13%;transform:translateX(-50%)}
+.bicycle{width:min(94vw,490px);right:-98%;bottom:11%}
+.mailbox{width:min(78vw,410px);left:50%;bottom:10%;transform:translateX(-50%)}
+.posting{width:min(80vw,420px);left:50%;bottom:10%;transform:translateX(-50%)}
+.reading{width:min(80vw,420px);left:50%;bottom:10%;transform:translateX(-50%)}
 .pattern{position:absolute;inset:0;background:url('mouse-mail-pattern.jpg') center/cover no-repeat;opacity:0;transform:scale(.96);z-index:6}
-.start{position:absolute;left:50%;top:10%;transform:translateX(-50%);z-index:9;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(70,52,38,.12);white-space:nowrap;transition:opacity .2s steps(2,end)}
-.caption{position:absolute;left:50%;top:18%;transform:translateX(-50%);width:90%;text-align:center;font-size:clamp(18px,5vw,27px);opacity:0;z-index:8}
-.final{position:absolute;left:50%;bottom:5%;transform:translate(-50%,10px);width:90%;text-align:center;opacity:0;z-index:8}.final h1{margin:0;font-size:clamp(28px,7vw,43px)}.final p{margin:5px 0 0;font-size:clamp(15px,4vw,19px)}
-.tap{position:absolute;inset:0;z-index:20;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.play .start{opacity:0}
-.play .caption{animation:captionStory 11.4s steps(1,end) .2s forwards}
+.title{position:absolute;left:50%;top:10%;transform:translateX(-50%);width:92%;text-align:center;font-size:clamp(22px,5.8vw,32px);font-weight:600;opacity:0;z-index:8}
+.final{position:absolute;left:50%;bottom:5%;transform:translate(-50%,10px);width:92%;text-align:center;opacity:0;z-index:8}.final h1{margin:0;font-size:clamp(30px,7.4vw,46px)}.final p{margin:5px 0 0;font-size:clamp(16px,4.2vw,20px)}
+.replay{position:absolute;inset:0;z-index:20;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.play .title-bike{animation:titleBike 3.1s steps(1,end) .45s forwards}
+.play .title-mailbox{animation:titleMailbox 2.6s steps(1,end) 3.7s forwards}
+.play .title-posting{animation:titlePosting 2.6s steps(1,end) 6.35s forwards}
+.play .title-reading{animation:titleReading 2.7s steps(1,end) 9s forwards}
 .play .bicycle{animation:bikeStory 3.1s steps(7,end) .5s forwards}
 .play .mailbox{animation:mailboxStory 2.6s steps(6,end) 3.7s forwards}
 .play .posting{animation:postingStory 2.6s steps(6,end) 6.35s forwards}
 .play .reading{animation:readingStory 2.7s steps(6,end) 9s forwards}
 .play .pattern{animation:patternStory .7s steps(4,end) 11.8s forwards}
 .play .final{animation:finalStory .5s steps(3,end) 12.45s forwards}
+@keyframes titleBike{0%{opacity:1}96%{opacity:1}100%{opacity:0}}
+@keyframes titleMailbox{0%{opacity:1}92%{opacity:1}100%{opacity:0}}
+@keyframes titlePosting{0%{opacity:1}92%{opacity:1}100%{opacity:0}}
+@keyframes titleReading{0%{opacity:1}92%{opacity:1}100%{opacity:0}}
 @keyframes bikeStory{
-  0%{opacity:1;right:-88%;transform:translateY(0) rotate(0)}
-  14%{opacity:1;right:-61%;transform:translateY(-3px) rotate(-.7deg)}
-  28%{opacity:1;right:-36%;transform:translateY(1px) rotate(.4deg)}
+  0%{opacity:1;right:-98%;transform:translateY(0) rotate(0)}
+  14%{opacity:1;right:-66%;transform:translateY(-3px) rotate(-.7deg)}
+  28%{opacity:1;right:-38%;transform:translateY(1px) rotate(.4deg)}
   42%{opacity:1;right:-10%;transform:translateY(-2px) rotate(-.5deg)}
-  56%{opacity:1;right:10%;transform:translateY(0) rotate(.3deg)}
-  70%{opacity:1;right:21%;transform:translateY(-2px) rotate(-.3deg)}
-  86%{opacity:1;right:26%;transform:translateY(1px) rotate(.2deg)}
-  96%{opacity:1;right:26%;transform:translateY(0) rotate(0)}
-  100%{opacity:0;right:26%;transform:translateY(0) rotate(0)}
+  56%{opacity:1;right:8%;transform:translateY(0) rotate(.3deg)}
+  70%{opacity:1;right:17%;transform:translateY(-2px) rotate(-.3deg)}
+  86%{opacity:1;right:21%;transform:translateY(1px) rotate(.2deg)}
+  96%{opacity:1;right:21%;transform:translateY(0) rotate(0)}
+  100%{opacity:0;right:21%;transform:translateY(0) rotate(0)}
 }
 @keyframes mailboxStory{
   0%{opacity:0;transform:translateX(-50%) translateY(8px)}
@@ -68,22 +73,19 @@ body{display:grid;place-items:center}
   92%{opacity:1;transform:translateX(-50%) rotate(0)}
   100%{opacity:0;transform:translateX(-50%) rotate(0)}
 }
-@keyframes captionStory{
-  0%{opacity:1}24%{opacity:1}25%{opacity:0}
-  31%{opacity:1}49%{opacity:1}50%{opacity:0}
-  56%{opacity:1}74%{opacity:1}75%{opacity:0}
-  81%{opacity:1}99%{opacity:1}100%{opacity:0}
-}
 @keyframes patternStory{0%{opacity:0;transform:scale(.96)}100%{opacity:1;transform:scale(1)}}
 @keyframes finalStory{0%{opacity:0;transform:translate(-50%,10px)}100%{opacity:1;transform:translate(-50%,0)}}
 @media(min-width:700px){.app{max-width:520px;height:min(92vh,900px);border-radius:28px;box-shadow:0 24px 70px rgba(0,0,0,.16)}}
 </style>
 </head>
 <body>
-<main class="app" id="app" aria-label="Interactive Mouse Mail story">
+<main class="app play" id="app" aria-label="Animated Mouse Mail story">
   <div class="scene">
     <div class="ground"></div>
-    <div class="caption">A tiny delivery is on the way…</div>
+    <div class="title title-bike">Off goes the tiny postmouse 🚲</div>
+    <div class="title title-mailbox">Someone is waiting for a letter 📬</div>
+    <div class="title title-posting">Special delivery, coming through 💌</div>
+    <div class="title title-reading">A little message has arrived ✉️</div>
     <img class="character bicycle" src="mouse-bicycle-mail.png" alt="Mouse riding a bicycle with mail">
     <img class="character mailbox" src="mouse-postbox-waiting.png" alt="Mouse waiting beside the mailbox">
     <img class="character posting" src="mouse-posting-letter.png" alt="Mouse posting a letter">
@@ -91,12 +93,11 @@ body{display:grid;place-items:center}
     <div class="pattern"></div>
     <div class="final"><h1>Meet Mouse Mail ✉️</h1><p>My newest pattern has arrived</p></div>
   </div>
-  <div class="start">Tap to play the tiny story 💌</div>
-  <button class="tap" id="tap" aria-label="Play the Mouse Mail story"></button>
+  <button class="replay" id="replay" aria-label="Replay the Mouse Mail story"></button>
 </main>
 <script>
 const app=document.getElementById('app');
-document.getElementById('tap').addEventListener('click',()=>{app.classList.remove('play');void app.offsetWidth;app.classList.add('play');});
+document.getElementById('replay').addEventListener('click',()=>{app.classList.remove('play');void app.offsetWidth;app.classList.add('play');});
 </script>
 </body>
 </html>

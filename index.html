@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Open the Tiny Pattern Door</title>
+<title>Meet Mouse Mail</title>
 <style>
   :root { --cream:#f6f0e7; --ink:#3f3a34; --wood:#b99a79; --wood2:#9c7f62; }
   * { box-sizing:border-box; }
@@ -11,13 +11,18 @@
   body { display:grid; place-items:center; }
   .app { position:relative; width:100vw; height:100svh; min-height:100vh; overflow:hidden; background:linear-gradient(#fbf8f3,#f2e9df); }
   .frame { position:absolute; left:50%; top:51%; transform:translate(-50%,-50%); width:min(78vw,430px); aspect-ratio:.68; perspective:1200px; filter:drop-shadow(0 18px 28px rgba(70,52,38,.20)); }
-  .doorway { position:absolute; inset:0; border:12px solid #d6c2aa; border-bottom-width:18px; border-radius:24px 24px 10px 10px; background:url('mouse-mail-pattern.jpg') center/cover no-repeat; overflow:visible; }
-  .doorway::after { content:""; position:absolute; inset:0; border-radius:10px 10px 2px 2px; background:rgba(246,240,231,.28); transition:opacity .7s ease .25s; pointer-events:none; z-index:1; }
-  .door { position:absolute; top:0; bottom:0; width:50%; background:linear-gradient(90deg,var(--wood2),var(--wood)); border:2px solid rgba(70,52,38,.25); transition:transform 1.15s cubic-bezier(.2,.75,.2,1); transform-style:preserve-3d; backface-visibility:hidden; z-index:3; }
+  .doorway { position:absolute; inset:0; border:12px solid #d6c2aa; border-bottom-width:18px; border-radius:24px 24px 10px 10px; overflow:visible; background:#eee5da; }
+  .pattern-base,.mouse-motion { position:absolute; inset:0; border-radius:10px 10px 2px 2px; background:url('mouse-mail-pattern.jpg') center/cover no-repeat; }
+  .pattern-base { transition:transform 4s ease .7s; }
+  .mouse-motion { opacity:0; pointer-events:none; }
+  .mouse-one { -webkit-mask-image:radial-gradient(circle at 34% 35%,#000 0 12%,transparent 18%); mask-image:radial-gradient(circle at 34% 35%,#000 0 12%,transparent 18%); }
+  .mouse-two { -webkit-mask-image:radial-gradient(circle at 70% 64%,#000 0 12%,transparent 18%); mask-image:radial-gradient(circle at 70% 64%,#000 0 12%,transparent 18%); }
+  .doorway::after { content:""; position:absolute; inset:0; border-radius:10px 10px 2px 2px; background:rgba(246,240,231,.28); transition:opacity .7s ease .25s; pointer-events:none; z-index:2; }
+  .door { position:absolute; top:0; bottom:0; width:50%; background:linear-gradient(90deg,var(--wood2),var(--wood)); border:2px solid rgba(70,52,38,.25); transition:transform 1.15s cubic-bezier(.2,.75,.2,1); transform-style:preserve-3d; backface-visibility:hidden; z-index:4; }
   .door::before { content:""; position:absolute; inset:8%; border:2px solid rgba(255,255,255,.28); border-radius:8px; box-shadow:inset 0 0 0 1px rgba(70,52,38,.12); }
   .left { left:0; transform-origin:left center; border-radius:10px 0 0 6px; }
   .right { right:0; transform-origin:right center; border-radius:0 10px 6px 0; }
-  .knob { position:absolute; top:50%; width:16px; height:16px; border-radius:50%; background:#6d5c4c; box-shadow:0 1px 4px rgba(0,0,0,.25); z-index:4; }
+  .knob { position:absolute; top:50%; width:16px; height:16px; border-radius:50%; background:#6d5c4c; box-shadow:0 1px 4px rgba(0,0,0,.25); z-index:5; }
   .left .knob { right:12px; } .right .knob { left:12px; }
   .sign { position:absolute; left:50%; top:10%; transform:translateX(-50%); z-index:7; padding:10px 17px; border-radius:999px; background:rgba(255,255,255,.9); backdrop-filter:blur(6px); font-size:clamp(15px,4vw,19px); letter-spacing:.02em; box-shadow:0 6px 18px rgba(70,52,38,.13); transition:opacity .35s ease,transform .35s ease; white-space:nowrap; }
   .hint { position:absolute; left:50%; bottom:7%; transform:translateX(-50%); z-index:7; text-align:center; font-size:14px; opacity:.72; transition:opacity .35s ease; width:90%; }
@@ -34,22 +39,31 @@
   .open .hint { opacity:0; }
   .open .reveal-copy { opacity:1; transform:translate(-50%,0); }
   .open .sparkle { animation:twinkle 1.8s ease-in-out .7s 2; }
+  .open .pattern-base { transform:scale(1.035); }
+  .open .mouse-one { opacity:1; animation:handBob 2.4s steps(3,end) 1.2s infinite; }
+  .open .mouse-two { opacity:1; animation:handTilt 3.1s steps(3,end) 1.45s infinite; }
+  @keyframes handBob { 0%,100%{transform:translateY(0)} 33%{transform:translateY(-3px)} 66%{transform:translateY(1px)} }
+  @keyframes handTilt { 0%,100%{transform:rotate(0deg)} 33%{transform:rotate(-1.2deg)} 66%{transform:rotate(.8deg)} }
   @keyframes twinkle { 0%,100%{opacity:0;transform:scale(.2)} 40%{opacity:1;transform:scale(1)} }
+  @media (prefers-reduced-motion:reduce){ .door,.pattern-base,.mouse-motion,.sparkle{animation:none!important;transition:none!important} }
   @media (min-width:700px){ .app{max-width:520px;height:min(92vh,900px);border-radius:28px;box-shadow:0 24px 70px rgba(0,0,0,.18)} }
 </style>
 </head>
 <body>
-<main class="app" id="app" aria-label="Interactive pattern reveal">
+<main class="app" id="app" aria-label="Interactive Mouse Mail pattern reveal">
   <div class="sparkle s1"></div><div class="sparkle s2"></div><div class="sparkle s3"></div><div class="sparkle s4"></div>
   <div class="frame" aria-hidden="true">
     <div class="doorway">
+      <div class="pattern-base"></div>
+      <div class="mouse-motion mouse-one"></div>
+      <div class="mouse-motion mouse-two"></div>
       <div class="door left"><span class="knob"></span></div>
       <div class="door right"><span class="knob"></span></div>
     </div>
   </div>
   <div class="sign">Tap to open ✨</div>
-  <div class="hint">What is hiding behind the tiny door?</div>
-  <div class="reveal-copy"><h1>Mouse Mail</h1><p>New pattern coming soon</p></div>
+  <div class="hint">A tiny mouse world is waiting inside</div>
+  <div class="reveal-copy"><h1>Meet Mouse Mail ✉️</h1><p>My newest pattern is here</p></div>
   <button class="tap" id="tap" aria-label="Open or close the tiny pattern door"></button>
 </main>
 <script>
